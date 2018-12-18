@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DMBiometricExample</string>
+    <string name="biometric_title">Title</string>
+    <string name="biometric_sub_title">Subtitle</string>
+    <string name="biometric_description">Description</string>
+    <string name="biometric_cancel">Cancle</string>
+</resources>
