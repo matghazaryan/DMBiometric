@@ -8,12 +8,12 @@ public class User {
     private String password;
     private List<User> userList;
 
-    public User(final String email, final String password) {
+    User(final String email, final String password) {
         this.email = email;
         this.password = password;
     }
 
-    public User(final String email, final String password, final List<User> userList) {
+    User(final String email, final String password, final List<User> userList) {
         this.email = email;
         this.password = password;
         this.userList = userList;

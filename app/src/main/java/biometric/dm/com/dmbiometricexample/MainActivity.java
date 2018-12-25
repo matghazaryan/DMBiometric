@@ -10,14 +10,14 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
-import biometric.dm.com.dmbiometric.constants.IBIOConstants;
-import biometric.dm.com.dmbiometric.listeners.IDMBiometricListener;
-import biometric.dm.com.dmbiometric.main.DMBiometricManager;
-import biometric.dm.com.dmbiometric.prepare.DMBiometricConfigs;
+import biometric.dm.com.dmbiometric.DMBIOConfigs;
+import biometric.dm.com.dmbiometric.DMBIOIBiometricListener;
+import biometric.dm.com.dmbiometric.DMBIOIConstants;
+import biometric.dm.com.dmbiometric.DMBIOManager;
 
-public class MainActivity extends AppCompatActivity implements IDMBiometricListener<User> {
+public class MainActivity extends AppCompatActivity implements DMBIOIBiometricListener<User> {
 
-    private DMBiometricManager<User> mBiometricManager;
+    private DMBIOManager<User> mBiometricManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity implements IDMBiometricListe
         setContentView(R.layout.activity_main);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            findViewById(R.id.btn_encrypt).setOnClickListener(v -> init(IBIOConstants.EncryptionMode.ENCRYPT));
-            findViewById(R.id.btn_decrypt).setOnClickListener(v -> init(IBIOConstants.EncryptionMode.DECRYPT));
+            findViewById(R.id.btn_encrypt).setOnClickListener(v -> init(DMBIOIConstants.EncryptionMode.ENCRYPT));
+            findViewById(R.id.btn_decrypt).setOnClickListener(v -> init(DMBIOIConstants.EncryptionMode.DECRYPT));
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void init(final IBIOConstants.EncryptionMode mode) {
+    private void init(final DMBIOIConstants.EncryptionMode mode) {
 
         @SuppressLint("InflateParams") final View view = getLayoutInflater().inflate(R.layout.biometric_v23_example, null);
         final TextView textView = view.findViewById(R.id.tv_status);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements IDMBiometricListe
 
         final User user = new User("John@gmail.com", "1234567899999", Arrays.asList(user1, user2, user3));
 
-        final DMBiometricConfigs<User> configs = new DMBiometricConfigs<User>(this)
+        final DMBIOConfigs<User> configs = new DMBIOConfigs<User>(this)
                 .setTitle("Title")
                 .setSubtitle("SubTitle")
                 .setDescription("Description")
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements IDMBiometricListe
                 .setUpdateStatusV23Listener(textView::setText);
 
 
-        mBiometricManager = new DMBiometricManager<>(configs);
+        mBiometricManager = new DMBIOManager<>(configs);
 
         mBiometricManager.showBiometric();
     }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements IDMBiometricListe
     }
 
     @Override
-    public void onFailed(final IBIOConstants.FailedType type, final int helpCode, final CharSequence helpString) {
+    public void onFailed(final DMBIOIConstants.FailedType type, final int helpCode, final CharSequence helpString) {
         switch (type) {
             case SDK_VERSION_NOT_SUPPORTED:
                 break;
