@@ -1,6 +1,6 @@
 package biometric.dm.com.dmbiometric;
 
-interface DMBIOIBiometric {
+interface DMBIOIManager {
 
     void showBiometricDialog();
 

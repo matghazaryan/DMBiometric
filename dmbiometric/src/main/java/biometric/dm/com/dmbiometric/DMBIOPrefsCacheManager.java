@@ -5,17 +5,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
-final class DMBIOBiometricPrefsCacheManager {
+final class DMBIOPrefsCacheManager {
 
-    private static DMBIOBiometricPrefsCacheManager instance;
+    private static DMBIOPrefsCacheManager instance;
     private SharedPreferences mSharedPreferences;
 
-    private DMBIOBiometricPrefsCacheManager() {
+    private DMBIOPrefsCacheManager() {
     }
 
-    public static DMBIOBiometricPrefsCacheManager getInstance() {
+    public static DMBIOPrefsCacheManager getInstance() {
         if (instance == null) {
-            instance = new DMBIOBiometricPrefsCacheManager();
+            instance = new DMBIOPrefsCacheManager();
         }
 
         return instance;

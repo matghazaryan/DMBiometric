@@ -21,7 +21,7 @@ public final class DMBIOConfigs<T> {
 
     private Cipher cipher;
 
-    private DMBIOIBiometricListener<T> biometricListener;
+    private DMBIOIListener<T> biometricListener;
 
     private View dialogViewV23;
 
@@ -66,7 +66,7 @@ public final class DMBIOConfigs<T> {
         this.cipher = cipher;
     }
 
-    public DMBIOConfigs<T> setBiometricListener(final DMBIOIBiometricListener<T> biometricListener) {
+    public DMBIOConfigs<T> setBiometricListener(final DMBIOIListener<T> biometricListener) {
         this.biometricListener = biometricListener;
         return this;
     }
@@ -124,7 +124,7 @@ public final class DMBIOConfigs<T> {
         return context;
     }
 
-    public DMBIOIBiometricListener<T> getBiometricListener() {
+    public DMBIOIListener<T> getBiometricListener() {
         return biometricListener;
     }
 

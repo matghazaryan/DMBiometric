@@ -13,15 +13,15 @@ import android.widget.TextView;
 import java.util.Objects;
 
 
-final class DMBIOBiometricDialogV23 extends BottomSheetDialog implements View.OnClickListener {
+final class DMBIODialogV23 extends BottomSheetDialog implements View.OnClickListener {
 
     private final DMBIOConfigs configs;
-    private final DMBIOBaseBiometric biometric;
+    private final DMBIOBase biometric;
 
     private TextView tvStatus;
     private ImageView ivBiometric;
 
-    DMBIOBiometricDialogV23(final @NonNull DMBIOConfigs configs, final DMBIOBaseBiometric biometric) {
+    DMBIODialogV23(final @NonNull DMBIOConfigs configs, final DMBIOBase biometric) {
         super(configs.getContext(), configs.getThemeDialogV23());
         this.configs = configs;
         this.biometric = biometric;

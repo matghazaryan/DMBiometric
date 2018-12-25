@@ -6,11 +6,11 @@ import android.support.annotation.RequiresApi;
 
 
 @RequiresApi(api = Build.VERSION_CODES.P)
-final class DMBIOBiometricListenerConverterV23ToV28 extends BiometricPrompt.AuthenticationCallback {
+final class DMBIOIListenerConverterV23ToV28 extends BiometricPrompt.AuthenticationCallback {
 
-    private final DMBIOBaseBiometric biometric;
+    private final DMBIOBase biometric;
 
-    DMBIOBiometricListenerConverterV23ToV28(final DMBIOBaseBiometric biometric) {
+    DMBIOIListenerConverterV23ToV28(final DMBIOBase biometric) {
         this.biometric = biometric;
     }
 

@@ -11,11 +11,11 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import biometric.dm.com.dmbiometric.DMBIOConfigs;
-import biometric.dm.com.dmbiometric.DMBIOIBiometricListener;
+import biometric.dm.com.dmbiometric.DMBIOIListener;
 import biometric.dm.com.dmbiometric.DMBIOIConstants;
 import biometric.dm.com.dmbiometric.DMBIOManager;
 
-public class MainActivity extends AppCompatActivity implements DMBIOIBiometricListener<User> {
+public class MainActivity extends AppCompatActivity implements DMBIOIListener<User> {
 
     private DMBIOManager<User> mBiometricManager;
 

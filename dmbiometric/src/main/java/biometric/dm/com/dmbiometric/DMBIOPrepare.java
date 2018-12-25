@@ -24,7 +24,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-abstract class DMBIOPrepareBiometric extends DMBIOBaseBiometric {
+abstract class DMBIOPrepare extends DMBIOBase {
 
     private KeyStore keyStore;
 

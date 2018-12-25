@@ -1,7 +1,7 @@
 package biometric.dm.com.dmbiometric;
 
 
-public interface DMBIOIBiometricListener<T> {
+public interface DMBIOIListener<T> {
 
     default void onSuccessEncrypted() {
     }

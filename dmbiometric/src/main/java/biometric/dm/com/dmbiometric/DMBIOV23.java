@@ -8,15 +8,15 @@ import android.support.v4.os.CancellationSignal;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 @SuppressLint("MissingPermission")
-final class DMBIOBiometricV23 implements DMBIOIBiometric {
+final class DMBIOV23 implements DMBIOIManager {
 
     private final DMBIOConfigs configs;
-    private final DMBIOBaseBiometric biometric;
+    private final DMBIOBase biometric;
 
     private CancellationSignal cancellationSignal;
-    private DMBIOBiometricDialogV23 biometricDialog;
+    private DMBIODialogV23 biometricDialog;
 
-    DMBIOBiometricV23(final DMBIOConfigs configs, final DMBIOBaseBiometric biometric) {
+    DMBIOV23(final DMBIOConfigs configs, final DMBIOBase biometric) {
         this.configs = configs;
         this.biometric = biometric;
     }
@@ -63,7 +63,7 @@ final class DMBIOBiometricV23 implements DMBIOIBiometric {
     }
 
     private void displayBiometricDialog() {
-        biometricDialog = new DMBIOBiometricDialogV23(configs, biometric);
+        biometricDialog = new DMBIODialogV23(configs, biometric);
         biometricDialog.setOnCancelListener(dialog -> cancel());
         biometricDialog.setOnDismissListener(dialog -> cancel());
         biometricDialog.show();

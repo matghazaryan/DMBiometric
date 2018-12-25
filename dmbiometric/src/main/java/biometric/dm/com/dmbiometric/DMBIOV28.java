@@ -11,14 +11,14 @@ import java.util.concurrent.Executor;
 
 @RequiresApi(api = Build.VERSION_CODES.P)
 @SuppressLint("MissingPermission")
-final class DMBIOBiometricV28 implements DMBIOIBiometric {
+final class DMBIOV28 implements DMBIOIManager {
 
     private final DMBIOConfigs configs;
-    private final DMBIOBaseBiometric biometric;
+    private final DMBIOBase biometric;
 
     private CancellationSignal cancellationSignal;
 
-    DMBIOBiometricV28(final DMBIOConfigs configs, final DMBIOBaseBiometric biometric) {
+    DMBIOV28(final DMBIOConfigs configs, final DMBIOBase biometric) {
         this.configs = configs;
         this.biometric = biometric;
     }
@@ -40,7 +40,7 @@ final class DMBIOBiometricV28 implements DMBIOIBiometric {
                 .setNegativeButton(configs.getNegativeButtonText(), executor, (dialogInterface, i) -> biometric.onAuthenticationCancelled())
                 .build();
 
-        build.authenticate(new BiometricPrompt.CryptoObject(configs.getCipher()), cancellationSignal, executor, new DMBIOBiometricListenerConverterV23ToV28(biometric));
+        build.authenticate(new BiometricPrompt.CryptoObject(configs.getCipher()), cancellationSignal, executor, new DMBIOIListenerConverterV23ToV28(biometric));
     }
 
     @Override

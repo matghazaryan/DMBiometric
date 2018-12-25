@@ -9,10 +9,10 @@ import android.support.annotation.RequiresApi;
 import javax.crypto.Cipher;
 
 
-public final class DMBIOManager<T> extends DMBIOPrepareBiometric {
+public final class DMBIOManager<T> extends DMBIOPrepare {
 
     private final DMBIOConfigs<T> configs;
-    private DMBIOIBiometric biometric;
+    private DMBIOIManager biometric;
 
     public DMBIOManager(final DMBIOConfigs<T> configs) {
         this.configs = configs;
@@ -76,14 +76,14 @@ public final class DMBIOManager<T> extends DMBIOPrepareBiometric {
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void showBiometric() {
         if (isConfigsCorrect(configs)) {
-            DMBIOBiometricPrefsCacheManager.getInstance().Initialize(configs.getContext());
+            DMBIOPrefsCacheManager.getInstance().Initialize(configs.getContext());
             prepare(configs, new DMBIOIPrepareListener() {
                 @Override
                 public void onSuccess() {
                     if (DMBIOUseConditionUtils.isBiometricPromptEnabled()) {
-                        biometric = new DMBIOBiometricV28(configs, DMBIOManager.this);
+                        biometric = new DMBIOV28(configs, DMBIOManager.this);
                     } else {
-                        biometric = new DMBIOBiometricV23(configs, DMBIOManager.this);
+                        biometric = new DMBIOV23(configs, DMBIOManager.this);
                     }
 
                     biometric.showBiometricDialog();

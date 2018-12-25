@@ -2,7 +2,7 @@ package biometric.dm.com.dmbiometric;
 
 import javax.crypto.Cipher;
 
-abstract class DMBIOBaseBiometric {
+abstract class DMBIOBase {
 
     protected abstract void onSdkVersionNotSupported();
 
