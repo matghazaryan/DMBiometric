@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements DMBIOIListener<Us
                 .setObjectForEncrypt(user)
                 .setEncrypt(mode)
                 .setDialogViewV23(view)
-                .setThemeDialogV23(R.style.Theme_Design_Light_BottomSheetDialog)
+//                .setThemeDialogV23(R.style.Theme_Design_Light_BottomSheetDialog)
                 .setUpdateStatusV23Listener(textView::setText);
 
 
