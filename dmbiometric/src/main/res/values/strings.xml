@@ -3,4 +3,5 @@
 
     <string name="biometric_touch_the_sensor" translatable="false">Touch the fingerprint sensor</string>
     <string name="biometric_not_recognized" translatable="false">Not Recognized</string>
+    <string name="biometric_not_encrypted_data" translatable="false">Not encrypted data for decrypt, at first decrypt eny data</string>
 </resources>

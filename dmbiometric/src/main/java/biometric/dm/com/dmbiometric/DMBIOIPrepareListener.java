@@ -4,5 +4,5 @@ interface DMBIOIPrepareListener {
 
     void onSuccess();
 
-    void onFailed();
+    void onFailed(final String message);
 }

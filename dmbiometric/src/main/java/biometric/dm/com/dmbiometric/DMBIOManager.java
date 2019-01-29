@@ -90,8 +90,8 @@ public final class DMBIOManager<T> extends DMBIOPrepare {
                 }
 
                 @Override
-                public void onFailed() {
-                    configs.getBiometricListener().onFailed(DMBIOIConstants.FailedType.AUTHENTICATION_FAILED_EXCEPTION, 0, null);
+                public void onFailed(final String message) {
+                    configs.getBiometricListener().onFailed(DMBIOIConstants.FailedType.AUTHENTICATION_FAILED_EXCEPTION, 0, message);
                 }
             });
         }

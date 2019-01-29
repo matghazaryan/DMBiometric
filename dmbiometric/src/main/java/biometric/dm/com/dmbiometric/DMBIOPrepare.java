@@ -52,7 +52,7 @@ abstract class DMBIOPrepare extends DMBIOBase {
                 | InvalidAlgorithmParameterException
                 | CertificateException
                 | IOException exc) {
-            listener.onFailed();
+            listener.onFailed(null);
             exc.printStackTrace();
         }
     }
@@ -68,7 +68,7 @@ abstract class DMBIOPrepare extends DMBIOBase {
         } catch (NoSuchAlgorithmException |
                 NoSuchPaddingException e) {
             e.printStackTrace();
-            listener.onFailed();
+            listener.onFailed(null);
             return;
         }
 
@@ -82,14 +82,19 @@ abstract class DMBIOPrepare extends DMBIOBase {
                     DMBIOBasePrefUtils.setIV(Base64.encodeToString(cipher.getIV(), Base64.NO_WRAP));
                     break;
                 case DECRYPT:
-                    final byte[] iv = Base64.decode(DMBIOBasePrefUtils.getIV(), Base64.NO_WRAP);
-                    final IvParameterSpec ivSpec = new IvParameterSpec(iv);
+                    if (DMBIOBasePrefUtils.getIV().length() > 0) {
+                        final byte[] iv = Base64.decode(DMBIOBasePrefUtils.getIV(), Base64.NO_WRAP);
+                        final IvParameterSpec ivSpec = new IvParameterSpec(iv);
 
-                    try {
-                        cipher.init(Cipher.DECRYPT_MODE, key, ivSpec);
-                    } catch (InvalidAlgorithmParameterException e) {
-                        e.printStackTrace();
-                        listener.onFailed();
+                        try {
+                            cipher.init(Cipher.DECRYPT_MODE, key, ivSpec);
+                        } catch (InvalidAlgorithmParameterException e) {
+                            e.printStackTrace();
+                            listener.onFailed(null);
+                            return;
+                        }
+                    } else {
+                        listener.onFailed(configs.getContext().getString(R.string.biometric_not_encrypted_data));
                         return;
                     }
                     break;
@@ -106,7 +111,7 @@ abstract class DMBIOPrepare extends DMBIOBase {
                 | NoSuchAlgorithmException
                 | InvalidKeyException e) {
             e.printStackTrace();
-            listener.onFailed();
+            listener.onFailed(null);
         }
     }
 
@@ -118,8 +123,8 @@ abstract class DMBIOPrepare extends DMBIOBase {
             }
 
             @Override
-            public void onFailed() {
-                listener.onFailed();
+            public void onFailed(final String message) {
+                listener.onFailed(null);
             }
         });
     }
