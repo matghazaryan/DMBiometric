@@ -80,11 +80,12 @@ public final class DMBIOManager<T> extends DMBIOPrepare {
             prepare(configs, new DMBIOIPrepareListener() {
                 @Override
                 public void onSuccess() {
-                    if (DMBIOUseConditionUtils.isBiometricPromptEnabled()) {
-                        biometric = new DMBIOV28(configs, DMBIOManager.this);
-                    } else {
-                        biometric = new DMBIOV23(configs, DMBIOManager.this);
-                    }
+                    biometric = new DMBIOV23(configs, DMBIOManager.this);
+//                    if (DMBIOUseConditionUtils.isBiometricPromptEnabled()) {          //TODO
+//                        biometric = new DMBIOV28(configs, DMBIOManager.this);
+//                    } else {
+//                        biometric = new DMBIOV23(configs, DMBIOManager.this);
+//                    }
 
                     biometric.showBiometricDialog();
                 }
